@@ -18,6 +18,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './_modules/shared.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { MemberCardsComponent } from './members/member-cards/member-cards.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     MemberDetailComponent,
     ListsComponent,
     MessagesComponent,
-    TestErrorsComponent
+    TestErrorsComponent,
+    MemberCardsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
     SharedModule
   ],
   providers: [
-    {provide : HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true}
+    {provide : HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true},
+    {provide : HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true},
   ],
   bootstrap: [AppComponent]
 })
