@@ -41,7 +41,8 @@ namespace API.Controllers
               await _context.SaveChangesAsync();
               return new UserDTO{
                   Username = user.UserName,
-                  Token = _tokenService.createToken(user) 
+                  Token = _tokenService.createToken(user) ,
+                  Gender = user.Gender
               };
         }
 
@@ -68,7 +69,8 @@ namespace API.Controllers
             }     
             return new UserDTO{
                 Username = user.UserName,
-                Token = _tokenService.createToken(user) 
+                Token = _tokenService.createToken(user) ,
+                Gender = user.Gender
             };
         }
 
