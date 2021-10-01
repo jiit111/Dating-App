@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
@@ -7,6 +8,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AdminGuard } from './_gaurds/admin.guard';
 import { AuthGuard } from './_gaurds/auth.guard';
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
     {path:'member/edit',component:MemberEditComponent},
     {path:'lists',component:ListsComponent},
     {path:'messages',component:MessagesComponent},
+    {path:'admin',component:AdminPanelComponent ,canActivate:[AdminGuard]},
   ]
 },
 {path:'errors',component:TestErrorsComponent},
